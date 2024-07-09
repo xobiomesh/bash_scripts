@@ -1,4 +1,4 @@
-# GitHub Repository Automation Script 
+# GitHub Repository Automation Script Walkthrough
 
 This script automates the process of creating a new GitHub repository, committing local files, and pushing them to GitHub. It ensures secure handling of your GitHub Personal Access Token (PAT) by leveraging Git's credential store.
 
