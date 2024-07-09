@@ -1,6 +1,6 @@
+
 #!/bin/bash
 
-# Checking for GitHub CLI installation
 echo "Checking for GitHub CLI installation..."
 
 # Check if GitHub CLI is installed
@@ -54,8 +54,12 @@ read repo_visibility
 
 # Creating the repository
 echo "Running: gh repo create $repo_name --${repo_visibility} --source=. --remote=origin"
-echo "Creating a new GitHub repository named '$repo_name' with $repo_visibility visibility..."
-gh repo create "$repo_name" --${repo_visibility} --source=. --remote=origin
+if gh repo create "$repo_name" --${repo_visibility} --source=. --remote=origin; then
+    echo "GitHub repository named '$repo_name' with $repo_visibility visibility created successfully."
+else
+    echo "Failed to create the GitHub repository. Please check your settings and try again."
+    exit 1
+fi
 
 # Initialize Git if necessary
 if [ ! -d ".git" ]; then
@@ -76,9 +80,18 @@ echo "Running: git commit -m 'Initial commit'"
 echo "Committing files to Git..."
 git commit -m "Initial commit"
 
+# Adding remote origin
+echo "Setting up remote origin..."
+git remote add origin "$(gh repo view --json url -q .url)"
+
 # Pushing to GitHub
 echo "Running: git push -u origin main"
-echo "Pushing files to the GitHub repository..."
-git push -u origin main
+if git push -u origin main; then
+    echo "Files pushed to the GitHub repository successfully."
+else
+    echo "Failed to push files to GitHub. Please check your network settings and try again."
+    exit 1
+fi
 
 echo "Repository '$repo_name' created and pushed successfully."
+
