@@ -1,7 +1,7 @@
 
 # Managing Functions in Your `.bashrc` File
 
-Over time, as you add more custom functions to your `.bashrc` file, it can become cluttered and difficult to manage. This tutorial will guide you through organizing your functions into separate files and sourcing them from your `.bashrc` to keep things clean and manageable.
+As you add more custom functions to your `.bashrc` file, it can become cluttered and difficult to manage. This tutorial will guide you through organizing your functions into separate files and sourcing them from your `.bashrc` to keep things clean and manageable.
 
 ## Step 1: Create a Directory for Your Scripts
 
