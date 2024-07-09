@@ -2,13 +2,11 @@
 
 # Function to select directory using fzf
 select_directory() {
-    echo "Select the $1 directory (starting search from root directory)..."
-    selected_dir=$(find / -type d 2>/dev/null | fzf --height 40% --border --prompt="Select $1 directory: ")
+    selected_dir=$(find / -type d 2>/dev/null | fzf --height 40% --border --prompt="Select the $1 directory (starting search from root directory): ")
     if [ -z "$selected_dir" ]; then
         echo "No directory selected. Exiting..."
         exit 1
     fi
-    echo "Selected $1 directory: $selected_dir"
     echo "$selected_dir"
 }
 
