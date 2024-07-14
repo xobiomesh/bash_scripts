@@ -4,7 +4,6 @@
 
 git-repo-list() {
 
-export GITHUB_TOKEN=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
 
 if [ -z "$GITHUB_TOKEN" ]; then
     echo "GITHUB_TOKEN is not set. Please export your token."
